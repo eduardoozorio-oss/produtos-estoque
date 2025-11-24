@@ -92,4 +92,16 @@ def atualizar_produto(id, dados):
 
     return {"mensagem": "Produto atualizado"}
 
+# Excluir produto
+def excluir_produto(id):
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    cursor.execute("DELETE FROM produtos WHERE id = %s", (id,))
+    conn.commit()
+
+    cursor.close()
+    conn.close()
+
+    return {"mensagem": "Produto removido"}
 
