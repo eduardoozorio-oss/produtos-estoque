@@ -23,3 +23,16 @@ def criar_produto(dados):
 
     return {"mensagem": "Produto cadastrado com sucesso"}
 
+# Listar produtos
+def listar_produtos():
+    conn = get_connection()
+    cursor = conn.cursor(dictionary=True)
+
+    cursor.execute("SELECT * FROM produtos")
+    produtos = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return produtos
+
